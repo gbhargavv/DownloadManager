@@ -77,7 +77,7 @@ It's easy to stop:
 Download
 ========
 
-        implementation 'com.github.gbhargavv:DownloadManager:1.0'
+        implementation 'com.github.gbhargavv:DownloadManager:1.0.1'
 
 
 Note
