@@ -2,12 +2,11 @@
 Android Http Download Manager
 ===========================
 
-An useful and effective http download manager for Android. This download manager is designed according to the idea and implementation of Volley.
-
+A valuable and compelling http download director for Android. This download director is planned by the thought and execution of Volley.
 
 Usage
 =====
-* If you don't set the destination file path, the download manager will use `Environment.DIRECTORY_DOWNLOADS` in SDCard as default directory, and it will detect filename automatically from header or url if destinationFilePath not set:
+* In the event that you don't set the objective document way, the download supervisor will utilize 'Environment.DIRECTORY_DOWNLOADS' in SDCard as default registry, and it will identify filename consequently from header or url if destinationFilePath not set:
 ```java
 DownloadManager manager = new DownloadManager.Builder().context(this)
         .downloader(OkHttpDownloader.create(client))
@@ -62,16 +61,23 @@ It's easy to stop:
 	manager.cancelAll();
 ```
 
-* If you don't want to set the filename but want to set the download directory, then you can use `destinationDirectory(String directory)`, but this method will be ignored if `destinationFilePath((String filePath)` was used.
-* You can also set retry time with method `retryTime(int retryTime)` if necessary, default retry time is 1. You can set retry interval to decide how long to retry with method `retryInterval(long interval, TimeUnit unit)`.
-* This manager support downloading in different network type with method `allowedNetworkTypes(int types)`, the types can be `DownloadRequest.NETWORK_MOBILE` and `DownloadRequest.NETWORK_WIFI`. This method need *android.permission.ACCESS_NETWORK_STATE* permission.
-* The thread pool size of download manager is 3 by default. If you need a larger pool, then you can try the method `threadPoolSize(int poolSize)` in `DownloadManager#Builder`.
-* You need *android.permission.WRITE_EXTERNAL_STORAGE* permission if you don't use public directory in SDCard as download destination file path. Don't forget to add *android.permission.INTERNET* permission.
-* This download manager support breakpoint downloading, so you can restart the downloading after pause.
-* If you don't want DownloadDispathcer invoke `onProgress(int downloadId, long bytesWritten, long totalBytes)` frequently, then you can use `progressInterval(long interval, TimeUnit unit)`.
-* If you want one download request get high priority, then you can use `priority(Priority priority)`.
-* The download manager provides two kinds of `Downloader`(`URLDownloader` and `OkHttpDownloader`), and the it will detect which downloader to use. You can also implement your own `Downloader` just like what `URLDownloader` and `OkHttpDownloader` do.
+* If you would prefer not to set the filename yet need to set the download catalog, then, at that point you can utilize 'destinationDirectory(String registry)', however this technique will be overlooked if 'destinationFilePath((String filePath)' was utilized. 
 
+* You can likewise set retry time with strategy 'retryTime(int retryTime)' if fundamental, default retry time is 1. You can set retry stretch to choose how long to retry with technique 'retryInterval(long span, TimeUnit unit)'. 
+
+* This administrator support downloading in various organization type with technique 'allowedNetworkTypes(int types)', the sorts can be 'DownloadRequest.NETWORK_MOBILE' and 'DownloadRequest.NETWORK_WIFI'. This strategy need *android.permission.ACCESS_NETWORK_STATE* consent. 
+
+* The string pool size of download supervisor is 3 naturally. In the event that you need a bigger pool, you can attempt the strategy 'threadPoolSize(int poolSize)' in 'DownloadManager#Builder'. 
+
+* You need *android.permission.WRITE_EXTERNAL_STORAGE* consent on the off chance that you don't utilize public catalog in SDCard as download objective record way. Remember to add *android.permission.INTERNET* authorization. 
+
+* This download director support breakpoint downloading, so you can restart the downloading after stop. 
+
+* If you don't need DownloadDispathcer conjure 'onProgress(int downloadId, long bytesWritten, long totalBytes)' as often as possible, then, at that point you can utilize 'progressInterval(long stretch, TimeUnit unit)'. 
+
+* If you need one download demand get high need, then, at that point you can utilize 'priority(Priority need)'. 
+
+* The download supervisor gives two sorts of 'Downloader'('URLDownloader' and 'OkHttpDownloader'), and the it will distinguish which downloader to utilize. You can likewise execute your own 'Downloader' very much like what 'URLDownloader' and 'OkHttpDownloader' do.
 
 
 Download
@@ -82,33 +88,9 @@ Download
 
 Note
 ====
-If you're using `OkHttpDownloader` with custom `OkHttpClient` as `Downloader` in `DownloadManager`, then you should not add [HttpLoggingInterceptor][2] in your custom `OkHttpClient`. It may be crashed(OOM) as `HttpLoggingInterceptor ` use `okio` to reqeust the whole body in memory.
-
+Assuming you're utilizing 'OkHttpDownloader' with custom 'OkHttpClient' as 'Downloader' in 'DownloadManager', you ought not add [HttpLoggingInterceptor][2] in your custom 'OkHttpClient'. It could be crashed(OOM) as 'HttpLoggingInterceptor ' use 'okio' to reqeust the entire body in memory.
 
 Credits
 =======
 * [Volley][1] - Google networking library for android.
 
-
-
-License
-=======
-
-    Copyright (C) 2014-2020 Vincent Cheung
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-    
-         http://www.apache.org/licenses/LICENSE-2.0
-    
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
-
-
-[1]: https://android.googlesource.com/platform/frameworks/volley
-[2]: https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor
-[3]: https://search.maven.org/remote_content?g=com.coolerfall&amp;a=android-http-download-manager&amp;v=LATEST
